@@ -1,8 +1,8 @@
 RedolyrLib
 ==========
 
-<description>
-  <groupId>redolyr.library</groupId>
-  <artifactId>redolyr.library</artifactId>
-  <version>1.2</version>
-</description>
+Maven:
+  groupId=redolyr.library<br>
+  artifact=redolyr.library<br>
+  version=1.2<br>
+  packing=jar<br>
