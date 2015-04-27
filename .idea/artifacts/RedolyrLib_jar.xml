@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="RedolyrLib:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/RedolyrLib_jar</output-path>
+    <root id="archive" name="RedolyrLib.jar">
+      <element id="module-output" name="RedolyrLibrary" />
+    </root>
+  </artifact>
+</component>

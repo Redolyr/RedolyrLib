@@ -1,7 +1,7 @@
-package RedolyrLibrary.drawComponents;
+package RedolyrLibrary.DrawComponents;
 
-import RedolyrLibrary.drawComponents.mouse.MouseCursor;
-import RedolyrLibrary.drawComponents.mouse.Vertex;
+import RedolyrLibrary.DrawComponents.mouse.MouseCursor;
+import RedolyrLibrary.DrawComponents.mouse.Vertex;
 
 import javax.swing.*;
 import java.awt.*;
