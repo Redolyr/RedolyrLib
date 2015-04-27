@@ -19,6 +19,10 @@ RedolyrLib
 </tr>
 <tr>
 <td nowrap>Description</td>
+<td nowrap>hi all. :DD</td>
+</tr>
+<tr>
+<td nowrap>Licence</td>
 <td nowrap>Will ban Distribution by unauthorized third-party perspective</td>
 </tr>
 </table>
