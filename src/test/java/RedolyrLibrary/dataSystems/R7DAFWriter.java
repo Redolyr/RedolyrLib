@@ -15,11 +15,10 @@ import java.util.Iterator;
 /**
  * Created by redolyr on 2014/10/13.
  */
-public class R7DAFWriter
-{
+public class R7DAFWriter {
     protected static Document document;
-    public static void write(File file, DataTagCompound dataTagCompound) throws TransformerException, ParserConfigurationException
-    {
+
+    public static void write(File file, DataTagCompound dataTagCompound) throws TransformerException, ParserConfigurationException {
         document = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 
         Element root = getDocument().createElement("root");
@@ -28,18 +27,16 @@ public class R7DAFWriter
 
         TransformerFactory.newInstance().newTransformer().transform(new DOMSource(getDocument()), new StreamResult(file));
     }
-    protected static Document getDocument() throws ParserConfigurationException
-    {
+
+    protected static Document getDocument() throws ParserConfigurationException {
         return document;
     }
-    public String replace(int id)
-    {
+
+    public String replace(int id) {
         String string = String.valueOf(id);
         char[] chars = string.toCharArray();
-        for (int len = 0; len < chars.length; ++len)
-        {
-            switch (chars[len])
-            {
+        for (int len = 0; len < chars.length; ++len) {
+            switch (chars[len]) {
                 case '0':
                     chars[len] = 'a';
                     break;
@@ -75,34 +72,28 @@ public class R7DAFWriter
         return string = new String(chars);
     }
 }
-class Any extends R7DAFWriter
-{
-    public Element anyElement(DataBase dataBase) throws ParserConfigurationException
-    {
+class Any extends R7DAFWriter {
+    public Element anyElement(DataBase dataBase) throws ParserConfigurationException {
         Element element = null;
-        if (dataBase.getId() != 1 || dataBase.getId() != 2)
-        {
+        if (dataBase.getId() != 1 || dataBase.getId() != 2) {
             element = this.getDocument().createElement("artifact");
             Element element1 = this.getDocument().createElement("artifact");
             element1.setAttribute("id", this.replace(dataBase.getId()));
             element1.appendChild(this.getDocument().createTextNode(dataBase.toString()));
             element.appendChild(element1);
-        }
-        else if (dataBase.getId() == 1) element.appendChild(new Compound().compoundElement((DataTagCompound) dataBase));
+        } else if (dataBase.getId() == 1)
+            element.appendChild(new Compound().compoundElement((DataTagCompound) dataBase));
         else if (dataBase.getId() == 2) element.appendChild(new List().listElement((DataTagList) dataBase));
         return element;
     }
 }
-class Compound extends Any
-{
-    public Element compoundElement(DataTagCompound dataTagCompound) throws ParserConfigurationException
-    {
+class Compound extends Any {
+    public Element compoundElement(DataTagCompound dataTagCompound) throws ParserConfigurationException {
         Element element = this.getDocument().createElement("artifactCompound");
         element.setAttribute("id", this.replace(dataTagCompound.getId()));
         int len = 0;
         Iterator<String> stringIterator = dataTagCompound.iterator();
-        while (stringIterator.hasNext())
-        {
+        while (stringIterator.hasNext()) {
             String key = stringIterator.next();
             Element element1 = this.anyElement(dataTagCompound.getTag(key));
             element1.setAttribute("key", key);
@@ -113,14 +104,13 @@ class Compound extends Any
         return element;
     }
 }
-class List extends Any
-{
-    public Element listElement(DataTagList dataTagList) throws ParserConfigurationException
-    {
+class List extends Any {
+    public Element listElement(DataTagList dataTagList) throws ParserConfigurationException {
         Element element = this.getDocument().createElement("artifactList");
         element.setAttribute("id", this.replace(dataTagList.getId()));
         element.setAttribute("len", this.replace(dataTagList.count()));
-        for (int len = 0; len < dataTagList.count(); ++len) element.appendChild(this.anyElement(dataTagList.getList(len)));
+        for (int len = 0; len < dataTagList.count(); ++len)
+            element.appendChild(this.anyElement(dataTagList.getList(len)));
         return element;
     }
 }

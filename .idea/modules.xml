@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RedolyrLib.iml" filepath="$PROJECT_DIR$/RedolyrLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RedolyrLibrary.iml" filepath="$PROJECT_DIR$/RedolyrLibrary.iml" />
     </modules>
   </component>
 </project>

@@ -6,6 +6,9 @@
 
     <groupId>redolyr.library</groupId>
     <artifactId>redolyr.library</artifactId>
-    <version>1.2</version>
+    <version>1.10</version>
+    <packaging>jar</packaging>
+    <description>hi all. :DD   Will ban Distribution by unauthorized third-party perspective</description>
+    <!--<name>RedolyrLib-${project.version}.${project.packaging}</name>-->
 
 </project>

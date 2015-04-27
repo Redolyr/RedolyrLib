@@ -8,55 +8,41 @@ import java.io.IOException;
 /**
  * Created by redolyr on 2014/10/07.
  */
-public class StringReplacer
-{
+public class StringReplacer {
     private File file;
 
     /**
-     *
      * @param file path or file
      */
-    public void setFile(File file)
-    {
+    public void setFile(File file) {
         this.file = file;
     }
 
     /**
-     *
      * @param shiftJIS before split string
-     * @param split example ':' or '='
+     * @param split    example ':' or '='
      * @return after split string
      */
-    public String getUTF8(String shiftJIS, String split)
-    {
+    public String getUTF8(String shiftJIS, String split) {
         String string = shiftJIS;
-        if (this.file.isFile() == false) return string;
+        if (this.file == null || this.file.isFile() == false) return string;
 
         BufferedReader bufferedReader = null;
-        try
-        {
+        try {
             bufferedReader = new BufferedReader(new FileReader(this.file));
             String buffer;
-            while ((buffer = bufferedReader.readLine()) != null)
-            {
+            while ((buffer = bufferedReader.readLine()) != null) {
                 String[] splits = buffer.split(split);
-                if (split.length() < 1 && splits[0].equals(shiftJIS)) string = splits[1] != null ? splits[1] : "";
+                if (split.length() > 1 && splits[0].equals(shiftJIS)) string = (splits[1] != null || splits[1] != "") ? splits[1] : "";
+//                System.out.println(splits[0].equals(shiftJIS) + ", " + shiftJIS + ", " + (split.length() > 1) + ", " + (splits[0].equals(shiftJIS)) + Arrays.toString(splits));
             }
-        }
-        catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
-        }
-        finally
-        {
-            if (bufferedReader != null)
-            {
-                try
-                {
+        } finally {
+            if (bufferedReader != null) {
+                try {
                     bufferedReader.close();
-                }
-                catch (IOException e)
-                {
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }

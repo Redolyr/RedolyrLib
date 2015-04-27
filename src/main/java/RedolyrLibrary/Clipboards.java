@@ -15,35 +15,27 @@ import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
 
-public class Clipboards implements ClipboardOwner
-{
-    public void lostOwnership(Clipboard clipboard, Transferable contents) {}
-    
-    public void setClipboardContents(String string)
-    {
+public class Clipboards implements ClipboardOwner {
+    public void lostOwnership(Clipboard clipboard, Transferable contents) {
+    }
+
+    public void setClipboardContents(String string) {
         StringSelection stringSelection = new StringSelection(string);
         Clipboard board = Toolkit.getDefaultToolkit().getSystemClipboard();
         board.setContents(stringSelection, this);
     }
-    
-    public String getClipboardContents()
-    {
+
+    public String getClipboardContents() {
         String result = "";
         Clipboard board = Toolkit.getDefaultToolkit().getSystemClipboard();
         Transferable contents = board.getContents(null);
         boolean hasContents = (contents != null) && contents.isDataFlavorSupported(DataFlavor.stringFlavor);
-        if (hasContents)
-        {
-            try
-            {
+        if (hasContents) {
+            try {
                 result = (String) contents.getTransferData(DataFlavor.stringFlavor);
-            }
-            catch (UnsupportedFlavorException exception)
-            {
+            } catch (UnsupportedFlavorException exception) {
                 exception.printStackTrace();
-            }
-            catch (IOException exception)
-            {
+            } catch (IOException exception) {
                 exception.printStackTrace();
             }
         }
