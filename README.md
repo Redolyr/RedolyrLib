@@ -14,6 +14,10 @@ RedolyrLib
 <td nowrap>redolyr.library</td>
 </tr>
 <tr>
+<td nowrap>Version</td>
+<td nowrap>1.2</td>
+</tr>
+<tr>
 <td nowrap>Packing</td>
 <td nowrap>jar</td>
 </tr>
