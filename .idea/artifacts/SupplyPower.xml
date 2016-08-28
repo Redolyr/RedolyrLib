@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="SupplyLib">
+    <output-path>$PROJECT_DIR$/out/artifacts/SupplyLib</output-path>
+    <root id="archive" name="SupplyPower.jar">
+      <element id="module-output" name="SupplyPower old RedolyrLib" />
+    </root>
+  </artifact>
+</component>[
