@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SupplyPower old RedolyrLib.iml" filepath="$PROJECT_DIR$/SupplyPower old RedolyrLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/inPython/inPython.iml" filepath="$PROJECT_DIR$/inPython/inPython.iml" />
+    </modules>
+  </component>
+</project>
