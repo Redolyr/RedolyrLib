@@ -1,7 +1,7 @@
 package SupplyPower;
 
 /**
- * Created by hyres on 2016/08/28.
+ * Created by redolyr on 2016/08/28.
  */
 public class BuffLocateInit {
 
