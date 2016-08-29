@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 /**
- * Created by hyres on 2016/08/10.
+ * Created by redolyr on 2016/08/10.
  */
 public class Localize {
 
