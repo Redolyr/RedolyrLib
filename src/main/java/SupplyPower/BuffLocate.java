@@ -3,7 +3,7 @@ package SupplyPower;
 import java.util.Arrays;
 
 /**
- * Created by hyres on 2016/08/27.
+ * Created by redolyr on 2016/08/27.
  */
 public class BuffLocate {
 
