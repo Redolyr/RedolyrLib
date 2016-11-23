@@ -18,10 +18,10 @@ public class ThawingZip {
     private ThawingZip() {
     }
 
-    public static String ThawingZIP(String par1String, boolean isJarFile) {
+    public static String ThawingZIP(String fileAndPath, boolean isJarFile) {
         String exported = "<None>";
 
-        if (par1String == null || par1String.equals("")) {
+        if (fileAndPath == null || fileAndPath.equals("")) {
             return exported;
         }
 
@@ -33,9 +33,9 @@ public class ThawingZip {
             s += name.charAt(len);
             if (name.charAt(len) == ' ') len += 2;
         }
-        File file = new File(s.replace('/', File.separatorChar), par1String);
+        File file = new File(s.replace('/', File.separatorChar), fileAndPath);
 
-        File path = new File(par1String.substring(0, par1String.lastIndexOf(".")));
+        File path = new File(fileAndPath.substring(0, fileAndPath.lastIndexOf(".")));
         if (path.isDirectory() == false) path.mkdirs();
 
         try {
@@ -44,24 +44,24 @@ public class ThawingZip {
             ZipFile zipFile = new ZipFile(file);
             Enumeration<? extends ZipEntry> entries = zipFile.entries();
             List<String> content = new ArrayList<String>();
+            BufferedInputStream bis = null;
+            BufferedOutputStream bos = null;
+            int ava;
+            byte[] bs;
             while (entries.hasMoreElements()) {
                 ZipEntry ze = entries.nextElement();
                 File outFile = new File(baseDir, ze.getName());
                 if (!ze.isDirectory()) {
                     outFile.mkdirs();
                 } else {
-                    BufferedInputStream bis = null;
-                    BufferedOutputStream bos = null;
                     try {
-                        InputStream is = zipFile.getInputStream(ze);
-                        bis = new BufferedInputStream(is);
+                        bis = new BufferedInputStream(zipFile.getInputStream(ze));
                         if (!outFile.getParentFile().exists()) {
                             outFile.getParentFile().mkdirs();
                         }
                         bos = new BufferedOutputStream(new FileOutputStream(outFile));
-                        int ava;
                         while ((ava = bis.available()) > 0) {
-                            byte[] bs = new byte[ava];
+                            bs = new byte[ava];
                             bis.read(bs);
                             bos.write(bs);
                         }
@@ -72,10 +72,6 @@ public class ThawingZip {
                     } finally {
                         try {
                             if (bis != null) bis.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                        try {
                             if (bos != null) bos.close();
                         } catch (IOException e) {
                             e.printStackTrace();
